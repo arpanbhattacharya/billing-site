@@ -110,6 +110,7 @@ function Editproduct() {
             <button
               onClick={async () => {
                 var fd = new FormData();
+                fd.append("id", param.id);
                 fd.append("name", pname);
                 fd.append("barcode", pbarcode);
                 fd.append("price", pprice);

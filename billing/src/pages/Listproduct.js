@@ -61,6 +61,7 @@ function Listproduct() {
                               fd
                             );
                             var resp2 = await resp.data;
+                            console.log(resp2);
 
                             getproduct();
                           }
@@ -71,7 +72,12 @@ function Listproduct() {
                       </button>
                     </td>
                     <td>
-                      <Link to={"/edit-product/"+pr._id} className="btn btn-outline-primary">Edit</Link>
+                      <Link
+                        to={"/edit-product/" + pr._id}
+                        className="btn btn-outline-primary"
+                      >
+                        Edit
+                      </Link>
                     </td>
                   </tr>
                 ))}

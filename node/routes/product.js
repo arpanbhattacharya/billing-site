@@ -20,9 +20,8 @@ product.get("/sel", async (req, res) => {
 });
 
 product.post("/del", async (req, res) => {
-  var findpr = await mproduct.findById(req.body.id);
-
   await mproduct.findByIdAndDelete(req.body.id);
+  res.json({ msg: "Deleted" });
 });
 
 product.post("/edit", async (req, res) => {

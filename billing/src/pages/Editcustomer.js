@@ -86,6 +86,7 @@ function Editcustomer() {
             <button
               onClick={async () => {
                 var fd = new FormData();
+                fd.append("id", param.id);
                 fd.append("name", cname);
                 fd.append("number", cnumber);
                 var resp = await axios.post(

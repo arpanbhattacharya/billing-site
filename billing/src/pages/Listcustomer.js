@@ -59,6 +59,7 @@ function Listcustomer() {
                               fd
                             );
                             var resp2 = await resp.data;
+                            console.log(resp2);
 
                             getcustomer();
                           }

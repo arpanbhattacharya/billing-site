@@ -75,6 +75,7 @@ function Addcustomer() {
                 );
                 var resp2 = await resp.data;
                 console.log(resp2);
+                window.location = "/add-customer";
               }}
               type="submit"
               className="btn btn-secondary"

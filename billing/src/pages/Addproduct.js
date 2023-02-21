@@ -92,9 +92,13 @@ function Addproduct() {
                 fd.append("barcode", pbarcode);
                 fd.append("price", pprice);
 
-                var resp = await axios.post("http://localhost:2000/products/add",fd);
+                var resp = await axios.post(
+                  "http://localhost:2000/products/add",
+                  fd
+                );
                 var resp2 = await resp.data;
                 console.log(resp2);
+                window.location = "/add-product";
               }}
               type="submit"
               className="btn btn-secondary"
