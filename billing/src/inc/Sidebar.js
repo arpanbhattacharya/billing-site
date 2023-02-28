@@ -10,7 +10,7 @@ function Sidebar() {
         <div className="list-group list-group-flush">
           <Link
             className="list-group-item list-group-item-action list-group-item-light p-3"
-            to="/dashboard"
+            to="/"
           >
             Dashboard
           </Link>
@@ -37,6 +37,12 @@ function Sidebar() {
             to="/list-customer"
           >
             List Customers
+          </Link>
+          <Link
+            className="list-group-item list-group-item-action list-group-item-light p-3"
+            to="/create-bill"
+          >
+            Create Bill
           </Link>
         </div>
       </div>

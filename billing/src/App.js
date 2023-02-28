@@ -8,19 +8,21 @@ import Listcustomer from "./pages/Listcustomer";
 import Listproduct from "./pages/Listproduct";
 import Editproduct from "./pages/Editproduct";
 import Editcustomer from "./pages/Editcustomer";
+import Createbill from "./pages/Createbill";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/add-product" element={<Addproduct />} />
           <Route path="/list-product" element={<Listproduct />} />
           <Route path="/add-customer" element={<Addcustomer />} />
           <Route path="/list-customer" element={<Listcustomer />} />
           <Route path="/edit-product/:id" element={<Editproduct />} />
           <Route path="/edit-customer/:id" element={<Editcustomer />} />
+          <Route path="/create-bill" element={<Createbill />} />
         </Routes>
       </BrowserRouter>
     </>

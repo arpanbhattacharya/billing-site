@@ -37,4 +37,9 @@ customer.post("/upd", async (req, res) => {
   res.json({ msg: "Updated" });
 });
 
+customer.post("/find", async (req, res) => {
+  var findd = await mcustomer.findOne({ number: req.body.number });
+  res.json(findd);
+});
+
 module.exports = customer;
