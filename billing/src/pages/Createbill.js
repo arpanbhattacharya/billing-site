@@ -5,6 +5,9 @@ import axios from "axios";
 
 function Createbill() {
   var [cnumber, setCnumber] = useState("");
+  var [name,setName] = useState("");
+  var [num,setNum] = useState("");
+  var [pid,setPid] = useState("");
 
   return (
     <>
@@ -37,6 +40,8 @@ function Createbill() {
                     var resp = await axios.post("http://localhost:2000/customers/find",fd);
                     var resp2 = await resp.data;
                     console.log(resp2);
+                    setName(resp2.name);
+                    setNum(resp2.number);
 
                 }} className="btn btn-outline-secondary" id="basic-addon2">
                   search
@@ -54,6 +59,7 @@ function Createbill() {
               </label>
               <div className="col-sm">
                 <input
+                  value={name}
                   type="text"
                   className="form-control"
                   id="username"
@@ -72,6 +78,7 @@ function Createbill() {
               </label>
               <div className="col-sm">
                 <input
+                  value={num}
                   type="text"
                   className="form-control"
                   id="usernumber"
