@@ -11,6 +11,7 @@ mongoose.connect(
 
 const customer = require("./routes/customer");
 const product = require("./routes/product");
+const billing = require("./routes/bill");
 
 app.use(cors());
 
@@ -24,5 +25,6 @@ app.use(expressFileupload());
 
 app.use("/customers", customer);
 app.use("/products", product);
+app.use("/bills", billing);
 
 app.listen(2000);

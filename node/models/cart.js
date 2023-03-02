@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const stdSchema = mongoose.Schema({
-  cid: String,
-  pid: String,
+  cid: mongoose.Schema.Types.ObjectId,
+  pid: mongoose.Schema.Types.ObjectId,
 });
 
 module.exports = mongoose.model("Cart", stdSchema);
