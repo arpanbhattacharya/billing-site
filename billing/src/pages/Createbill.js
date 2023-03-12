@@ -10,6 +10,14 @@ function Createbill() {
   var [cid, setCid] = useState("");
   var [barcode, setBarcode] = useState();
 
+  var [bill, setBill] = useState([]);
+
+  async function getbill() {
+    var resp = await axios.get("http://localhost:2000/bills/getall");
+    var resp2 = await resp.data;
+
+    setBill(resp2);
+  }
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -111,6 +119,7 @@ function Createbill() {
               </label>
               <div className="col-sm">
                 <input
+                  value={barcode}
                   onChange={(ev) => {
                     setBarcode(ev.target.value);
                   }}
@@ -127,9 +136,15 @@ function Createbill() {
                 var fd = new FormData();
                 fd.append("cid", cid);
                 fd.append("barcode", barcode);
-                var resp = await axios.post("http://localhost:2000/bills/add",fd);
+                var resp = await axios.post(
+                  "http://localhost:2000/bills/add",
+                  fd
+                );
                 var resp2 = await resp.data;
                 console.log(resp2);
+
+                setBarcode("");
+                getbill();
               }}
               type="submit"
               className="btn btn-secondary"
@@ -137,6 +152,24 @@ function Createbill() {
               Add Product
             </button>
           </div>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Barcode</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bill.map((pr) => (
+                <tr key={pr._id}>
+                  <td>{pr.products[0].name}</td>
+                  <td>{pr.products[0].price}</td>
+                  <td>{pr.products[0].barcode}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

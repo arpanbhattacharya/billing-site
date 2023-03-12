@@ -14,10 +14,24 @@ billl.post("/add", async (req, res) => {
       pid: pid,
     };
     await mcart.create(obj);
-    res.json(obj);
+    res.json({ msg: "added" });
   } else {
     res.json({ msg: "Invalid" });
   }
+});
+
+billl.get("/getall", async (req, res) => {
+  var cartdata = await mcart.aggregate([
+    {
+      $lookup: {
+        from: "products",
+        localField: "pid",
+        foreignField: "_id",
+        as: "products",
+      },
+    },
+  ]);
+  res.json(cartdata);
 });
 
 module.exports = billl;
