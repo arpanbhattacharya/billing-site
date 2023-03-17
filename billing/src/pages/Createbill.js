@@ -151,25 +151,66 @@ function Createbill() {
             >
               Add Product
             </button>
-          </div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Barcode</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bill.map((pr) => (
-                <tr key={pr._id}>
-                  <td>{pr.products[0].name}</td>
-                  <td>{pr.products[0].price}</td>
-                  <td>{pr.products[0].barcode}</td>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Price</th>
+                  <th scope="col">Barcode</th>
+                  <th scope="col">Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {bill.map((pr) => (
+                  <tr key={pr._id}>
+                    <td>{pr.products[0].name}</td>
+                    <td>{pr.products[0].price}</td>
+                    <td>{pr.products[0].barcode}</td>
+                    <td>
+                      <button
+                        onClick={async () => {
+                          if (window.confirm("Are you sure?")) {
+                            var fd = new FormData();
+                            fd.append("id", pr._id);
+
+                            var resp = await axios.post(
+                              "http://localhost:2000/bills/del",
+                              fd
+                            );
+                            var resp2 = await resp.data;
+                            getbill();
+                          }
+                        }}
+                        className="btn btn-danger"
+                      >
+                        delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p>
+              <button
+                onClick={async () => {
+                  var fda = new FormData();
+                  fda.append("cid", cid);
+                  fda.append("name", name);
+                  fda.append("number", num);
+
+                  var respo = await axios.post(
+                    "http://localhost:2000/bills/order",
+                    fda
+                  );
+                  var respo2 = respo.data;
+                  console.log(respo2);
+                }}
+                className="btn btn-success"
+              >
+                Confirm Order
+              </button>
+            </p>
+          </div>
         </div>
       </div>
     </>
