@@ -9,6 +9,8 @@ import Listproduct from "./pages/Listproduct";
 import Editproduct from "./pages/Editproduct";
 import Editcustomer from "./pages/Editcustomer";
 import Createbill from "./pages/Createbill";
+import Showbill from "./pages/Showbill";
+import Print from "./pages/Print";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/edit-product/:id" element={<Editproduct />} />
           <Route path="/edit-customer/:id" element={<Editcustomer />} />
           <Route path="/create-bill" element={<Createbill />} />
+          <Route path="/show-bill" element={<Showbill />} />
+          <Route path="/print/:oid" element={<Print/>} />
         </Routes>
       </BrowserRouter>
     </>

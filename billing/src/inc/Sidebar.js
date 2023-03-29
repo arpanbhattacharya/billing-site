@@ -44,6 +44,12 @@ function Sidebar() {
           >
             Create Bill
           </Link>
+          <Link
+            className="list-group-item list-group-item-action list-group-item-light p-3"
+            to="/show-bill"
+          >
+            Show Bill
+          </Link>
         </div>
       </div>
     </>

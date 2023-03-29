@@ -72,4 +72,15 @@ billl.post("/order", async (req, res) => {
   res.json({ msg: "done" });
 });
 
+billl.get("/sbill", async (req, res) => {
+  var data = morder.find();
+  res.json(data);
+});
+
+billl.post("/mbill", async (req, res) => {
+  var data = await morder.findOne({ order_id: req.body.oid });
+  var product = await msuborder.find({ order_id: req.body.oid });
+  res.json({ bill: data, products: product });
+});
+
 module.exports = billl;
