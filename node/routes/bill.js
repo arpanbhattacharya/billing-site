@@ -73,7 +73,7 @@ billl.post("/order", async (req, res) => {
 });
 
 billl.get("/sbill", async (req, res) => {
-  var data = morder.find();
+  var data = await morder.find();
   res.json(data);
 });
 
