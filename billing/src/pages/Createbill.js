@@ -9,6 +9,7 @@ function Createbill() {
   var [num, setNum] = useState("");
   var [cid, setCid] = useState("");
   var [barcode, setBarcode] = useState();
+  var [dt, setDt] = useState("");
 
   var [bill, setBill] = useState([]);
 
@@ -115,6 +116,27 @@ function Createbill() {
                 className="col-sm-2 
                 col-form-label h1"
               >
+                Date
+              </label>
+              <div className="col-sm">
+                <input
+                  onChange={(ev) => {
+                    setDt(ev.target.value);
+                  }}
+                  type="date"
+                  className="form-control"
+                  id="usernumber"
+                  placeholder="Enter Number"
+                />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <label
+                // for="usernumber"
+                className="col-sm-2 
+                col-form-label h1"
+              >
                 Product Barcode
               </label>
               <div className="col-sm">
@@ -197,6 +219,7 @@ function Createbill() {
                   fda.append("cid", cid);
                   fda.append("name", name);
                   fda.append("number", num);
+                  fda.append("date", dt);
 
                   var respo = await axios.post(
                     "http://localhost:2000/bills/order",
@@ -204,6 +227,7 @@ function Createbill() {
                   );
                   var respo2 = respo.data;
                   console.log(respo2);
+                  window.location = "/show-bill";
                 }}
                 className="btn btn-success"
               >

@@ -50,8 +50,9 @@ billl.post("/order", async (req, res) => {
   }
   var obj = {
     name: req.body.name,
-    phone: req.body.number,
+    number: req.body.number,
     order_id: order_id,
+    dt: req.body.date
   };
   await morder.create(obj);
 

@@ -42,7 +42,7 @@ function Showbill() {
                   <tr key={b._id}>
                     <td>{b.order_id}</td>
                     <td>{b.name}</td>
-                    <td>{b.phone}</td>
+                    <td>{b.number}</td>
                     <td>
                       <a
                         target="_blank"
