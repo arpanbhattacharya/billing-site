@@ -45,7 +45,7 @@ function Print() {
 
   useEffect(() => {
     getTotal();
-  }, []);
+  },[]);
   return (
     <>
       <center>
