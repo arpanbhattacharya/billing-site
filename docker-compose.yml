@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./billing
+    ports:
+      - 3000:3000
+
+  api:
+    build: ./node
+    ports:
+      - 2000:2000
+    environment:
+      DB_URL: mongodb://db/billingdb
+
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - arpan:/data/db
+
+volumes:
+  arpan:
