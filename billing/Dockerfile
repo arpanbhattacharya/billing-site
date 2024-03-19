@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:17-alpine
 
 WORKDIR /frontend
 
@@ -13,5 +13,3 @@ EXPOSE 3000
 RUN npm run build
 
 CMD ["npx", "serve", "-s", "build"]
-
-
